@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ResponseModel } from 'src/Models/ResponseModel';
 import { LoginService } from '../Services/login.service';
 
@@ -8,7 +9,7 @@ import { LoginService } from '../Services/login.service';
   
 })
 export class LoginComponent {
-    constructor( private loginservice: LoginService) {
+    constructor( private loginservice: LoginService,private router: Router) {
         
         
     }
@@ -23,10 +24,10 @@ export class LoginComponent {
             var resp=<ResponseModel>data;
             this.token=resp.token;
             localStorage.setItem('token', this.token);
-            
+            this.router.navigate(['/employees']);
 
 
-        });
+        },(err) => console.log(err));
     }
   
 }

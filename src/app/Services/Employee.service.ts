@@ -6,23 +6,29 @@ import { ResponseModel } from 'src/Models/ResponseModel';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
+export class EmployeeService {
 
   constructor(private http:HttpClient) { }
 
-  login(useranme:string,password: string) : Observable<ResponseModel>  {
-    let user={
-      Username:useranme,
-      Password:password
-    }
-    return this.http.post('https://hrms2023.azurewebsites.net/api/Login',user).pipe(
+  GetEmployees() : Observable<ResponseModel> {
+    
+    return this.http.get('https://hrms2023.azurewebsites.net/api/employee').pipe(
       mergeMap((data) => {
         var resp = <ResponseModel>data;
         return of(resp);
       }
       ));  
-      
-   
+
+  }
+
+  GetEmployeeById(id : number) : Observable<ResponseModel> {
+    
+    return this.http.get('https://hrms2023.azurewebsites.net/api/employee/'+id).pipe(
+      mergeMap((data) => {
+        var resp = <ResponseModel>data;
+        return of(resp);
+      }
+      ));  
 
   }
 }
