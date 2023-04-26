@@ -5,11 +5,11 @@ import { ActivityComponent } from './Activity/activity.component';
 import { EmployeeDetailComponent } from './EmployeeDetail/employeedetail.component';
 import { EmployeeComponent } from './Employees/employee.component';
 import { AuthGuard } from './Guards/auth.guard';
-import { ChildGuard } from './Guards/child.guard';
+import {ChildGuard} from './Guards/child.guard';
 import { ResolveGuard } from './Guards/resolve.guard';
 import { LoginComponent } from './Home/login.component';
 import { UsersComponent } from './Users/users.component';
-
+import { ProductDashboardModule } from './product-dashboard/product-dashboard.module';
 const routes: Routes = [
 {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'login',component:LoginComponent},
@@ -20,7 +20,12 @@ children :
 [
   {path:'',redirectTo:'about',pathMatch:'full'},
 {path:'about',component:AboutComponent},
-{path:'activity',component:ActivityComponent},
+{path:'activity',component:ActivityComponent,children:
+[
+  {path:'',redirectTo:'product',pathMatch:'full'},
+  {path : 'product',loadChildren : () => {return ProductDashboardModule}}
+
+]},
 ],  },
   {path:"**",component:LoginComponent}
 ];
