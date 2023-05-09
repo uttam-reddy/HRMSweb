@@ -23,7 +23,11 @@ export class EmployeeComponent implements OnInit {
         //        this.employees=resp.entity;
         //        console.log(this.employees);
         // });
-        this.employees=<Employee[]>this.route.snapshot.data['data']?.entity;
+        
+    }
+
+    ngAfterViewInit(){
+      this.employees=<Employee[]>this.route.snapshot.data['data']?.entity;
     }
 
     

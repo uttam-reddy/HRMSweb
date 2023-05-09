@@ -19,12 +19,16 @@ export class EmployeeDetailComponent implements OnInit {
     }
 
     ngOnInit() {
+      
+    }
+
+    ngAfterViewInit(){
       this.id=this.route.snapshot.params['id'];
-        this.employeeservice.GetEmployeeById(this.id).subscribe(data => {
-               var resp=<ResponseModel>data;
-               this.employees=resp.entity;
-               console.log(this.employees);
-        });
+      this.employeeservice.GetEmployeeById(this.id).subscribe(data => {
+             var resp=<ResponseModel>data;
+             this.employees=resp.entity;
+             console.log(this.employees);
+      });
     }
 
     

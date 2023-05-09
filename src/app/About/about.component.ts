@@ -19,12 +19,16 @@ export class AboutComponent implements OnInit {
     }
 
     ngOnInit() {
+      
+    }
+
+    ngAfterViewInit(){
       this.id= parseInt(this.route.snapshot.parent?.params['id']);
-        this.employeeservice.GetEmployeeById(this.id).subscribe(data => {
-               var resp=<ResponseModel>data;
-               this.employees=resp.entity;
-               console.log(this.employees);
-        });
+      this.employeeservice.GetEmployeeById(this.id).subscribe(data => {
+             var resp=<ResponseModel>data;
+             this.employees=resp.entity;
+             console.log(this.employees);
+      });
     }
 
     
