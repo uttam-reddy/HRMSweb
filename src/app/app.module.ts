@@ -8,7 +8,7 @@ import { LoginComponent } from './Home/login.component';
 import { LoginService } from './Services/login.service';
 import { UsersComponent } from './Users/users.component';
 import {HttpClientModule} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgePipe } from './pipes/age.pipe';
 import { EmployeeDetailComponent } from './EmployeeDetail/employeedetail.component';
 import { AboutComponent } from './About/about.component';
@@ -21,7 +21,7 @@ import { ResolveGuard } from './Guards/resolve.guard';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,HttpClientModule,FormsModule
+    AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule
   ],
   providers: [LoginService,AuthGuard,ResolveGuard],
   bootstrap: [AppComponent]
