@@ -38,4 +38,18 @@ export class EmployeeService {
       ));  
 
   }
+
+  GetEmployeeActivitiesById(id : number) : Observable<ResponseModel> {
+    
+    return this.http.get('https://hrms2023.azurewebsites.net/api/EmployeeActivities/'+id,{
+      headers : {
+          "Authorization": 'Bearer ' + localStorage.getItem('token')
+      }   }).pipe(
+      mergeMap((data) => {
+        var resp = <ResponseModel>data;
+        return of(resp);
+      }
+      ));  
+
+  }
 }

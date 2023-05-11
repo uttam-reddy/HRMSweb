@@ -13,5 +13,12 @@ export class Employee {
   departmentId: number=0
 }
 
+export class EmployeeActivity {
+  activityId: number=0
+  employeeActivityId: number=0
+  activityName: string=""
+  employeeName: string=""
+}
+
 
 

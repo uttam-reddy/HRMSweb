@@ -8,22 +8,24 @@
                     <tr>
                        
                         <td >Charity</td>
-                    </tr>
-                    <tr>
-                        <td>Employee Activity</td>
-                        <td>:</td>
-                        <td>Charity</td>
-                    </tr>
+                    </tr >
                     <tr>
                         <td>Name</td>
                         <td>:</td>
-                        <td>Goshala Childrens</td>
+                        <td>{{employeename}}</td>
                     </tr>
-                    <tr>
-                        <td>Domain</td>
+                   
+                    <tr *ngFor="let empact of employeesactivity">
+                        <td>Employee Activity</td>
                         <td>:</td>
-                        <td>Charity Domain</td>
+                        <td>{{empact.activityId}}</td>
+                    
+                   
+                        <td>Activity Name</td>
+                        <td>:</td>
+                        <td>{{empact.activityName}}</td>
                     </tr>
+               
                    
                    
                 </tbody>

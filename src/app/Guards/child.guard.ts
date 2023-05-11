@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export  class ChildGuard implements CanActivateChild {
   canActivateChild(){
+    //return false;
       var item =localStorage.getItem('token');
       if(item != null){
         return true;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Employee } from 'src/Models/EmployeeModel';
+import { Employee, EmployeeActivity } from 'src/Models/EmployeeModel';
 import { ResponseModel } from 'src/Models/ResponseModel';
 import { EmployeeService } from '../Services/Employee.service';
 
@@ -12,6 +12,7 @@ import { EmployeeService } from '../Services/Employee.service';
 export class EmployeeDetailComponent implements OnInit {
 
     employees :  Employee=new Employee;
+    employeesactivity : EmployeeActivity = new EmployeeActivity;
     id : number =0;
     constructor(private employeeservice : EmployeeService,
       private route : ActivatedRoute ) {
@@ -31,6 +32,9 @@ export class EmployeeDetailComponent implements OnInit {
     ngAfterViewInit(){
       this.id=this.route.snapshot.params['id'];
       this.employees=<Employee>this.route.snapshot.data['data']?.entity;
+
+       
+
     }
 
     

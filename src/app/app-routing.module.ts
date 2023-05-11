@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:'employees/:id',component:EmployeeDetailComponent,canActivate:[AuthGuard],resolve:{ data : LoadEmployeeGuard},canActivateChild:[ChildGuard],
 children :
 [
-  {path:'',redirectTo:'about',pathMatch:'full'},
+  {path:'',redirectTo:'activity',pathMatch:'full'},
 {path:'about',component:AboutComponent},
 {path:'activity',component:ActivityComponent,children:
 [

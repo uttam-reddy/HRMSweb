@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Employee } from 'src/Models/EmployeeModel';
+import { Employee, EmployeeActivity } from 'src/Models/EmployeeModel';
 import { ResponseModel } from 'src/Models/ResponseModel';
 import { EmployeeService } from '../Services/Employee.service';
 
@@ -13,18 +13,21 @@ export class ActivityComponent implements OnInit {
 
     employees :  Employee=new Employee;
     id : number =0;
+    employeename : string="";
+    employeesactivity : EmployeeActivity[]= [];
     constructor(private employeeservice : EmployeeService,private route : ActivatedRoute ) {
 
 
     }
 
     ngOnInit() {
-      this.id=this.route.snapshot.params['id'];
-        this.employeeservice.GetEmployeeById(this.id).subscribe(data => {
-               var resp=<ResponseModel>data;
-               this.employees=resp.entity;
-               console.log(this.employees);
-        });
+      this.id= parseInt(this.route.snapshot.parent?.params['id']);
+      this.employeeservice.GetEmployeeActivitiesById(this.id).subscribe(data => {
+        //var resp=<ResponseModel>data;
+        this.employeesactivity=data.entity;
+        this.employeename=data?.entity[0].employeeName;
+       console.log(this.employeesactivity);
+});
     }
 
     
