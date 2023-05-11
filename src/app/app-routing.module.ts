@@ -10,12 +10,13 @@ import { ResolveGuard } from './Guards/resolve.guard';
 import { LoginComponent } from './Home/login.component';
 import { UsersComponent } from './Users/users.component';
 import { ProductDashboardModule } from './product-dashboard/product-dashboard.module';
+import { LoadEmployeeGuard } from './Guards/loademployee.guard';
 const routes: Routes = [
 {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'login',component:LoginComponent},
   {path:'users',component:UsersComponent},
   {path:'employees',component:EmployeeComponent,canActivate:[AuthGuard],resolve:{ data : ResolveGuard}},
-  {path:'employees/:id',component:EmployeeDetailComponent,canActivate:[AuthGuard],canActivateChild:[ChildGuard],
+  {path:'employees/:id',component:EmployeeDetailComponent,canActivate:[AuthGuard],resolve:{ data : LoadEmployeeGuard},canActivateChild:[ChildGuard],
 children :
 [
   {path:'',redirectTo:'about',pathMatch:'full'},

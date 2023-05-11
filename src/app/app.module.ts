@@ -15,6 +15,8 @@ import { AboutComponent } from './About/about.component';
 import { ActivityComponent } from './Activity/activity.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { ResolveGuard } from './Guards/resolve.guard';
+import { ChildGuard } from './Guards/child.guard';
+import { LoadEmployeeGuard } from './Guards/loademployee.guard';
 @NgModule({
   declarations: [
     AppComponent,UsersComponent,LoginComponent,EmployeeComponent, AgePipe,EmployeeDetailComponent,AboutComponent,ActivityComponent
@@ -23,7 +25,7 @@ import { ResolveGuard } from './Guards/resolve.guard';
     BrowserModule,
     AppRoutingModule,HttpClientModule,FormsModule,ReactiveFormsModule
   ],
-  providers: [LoginService,AuthGuard,ResolveGuard],
+  providers: [LoginService,AuthGuard,ResolveGuard,LoadEmployeeGuard,ChildGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

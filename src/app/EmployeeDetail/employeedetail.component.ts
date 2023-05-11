@@ -13,22 +13,24 @@ export class EmployeeDetailComponent implements OnInit {
 
     employees :  Employee=new Employee;
     id : number =0;
-    constructor(private employeeservice : EmployeeService,private route : ActivatedRoute ) {
+    constructor(private employeeservice : EmployeeService,
+      private route : ActivatedRoute ) {
 
 
     }
 
     ngOnInit() {
-      this.id=this.route.snapshot.params['id'];
-      this.employeeservice.GetEmployeeById(this.id).subscribe(data => {
-             var resp=<ResponseModel>data;
-             this.employees=resp.entity;
-             console.log(this.employees);
-      });
+      
+      //this.employeeservice.GetEmployeeById(this.id).subscribe(data => {
+             //var resp=<ResponseModel>data;
+       //      this.employees=resp.entity;
+       //      console.log(this.employees);
+     // });
     }
 
     ngAfterViewInit(){
-      
+      this.id=this.route.snapshot.params['id'];
+      this.employees=<Employee>this.route.snapshot.data['data']?.entity;
     }
 
     
