@@ -27,11 +27,12 @@ export class EmployeeDetailComponent implements OnInit {
        //      this.employees=resp.entity;
        //      console.log(this.employees);
      // });
+     this.id=this.route.snapshot.params['id'];
+      this.employees=<Employee>this.route.snapshot.data['data']?.entity;
     }
 
     ngAfterViewInit(){
-      this.id=this.route.snapshot.params['id'];
-      this.employees=<Employee>this.route.snapshot.data['data']?.entity;
+      
 
        
 

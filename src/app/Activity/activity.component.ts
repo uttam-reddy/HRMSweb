@@ -25,7 +25,10 @@ export class ActivityComponent implements OnInit {
       this.employeeservice.GetEmployeeActivitiesById(this.id).subscribe(data => {
         //var resp=<ResponseModel>data;
         this.employeesactivity=data.entity;
-        this.employeename=data?.entity[0].employeeName;
+        if(data.entity.length > 0){
+          this.employeename=data?.entity[0].employeeName;
+        }
+        
        console.log(this.employeesactivity);
 });
     }

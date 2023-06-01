@@ -25,6 +25,37 @@ export class EmployeeService {
 
   }
 
+  GetDepartments() : Observable<ResponseModel> {
+    
+    return this.http.get('https://hrms2023.azurewebsites.net/api/employee/departments',{
+      headers : {
+          "Authorization": 'Bearer ' + localStorage.getItem('token')
+      }   
+  }).pipe(
+      mergeMap((data) => {
+        var resp = <ResponseModel>data;
+        return of(resp);
+      }
+      ));  
+
+  }
+
+
+  UpdateEmployee(id:any,data : any) : Observable<ResponseModel> {
+    
+    return this.http.put('https://hrms2023.azurewebsites.net/api/employee/'+id,data,{
+      headers : {
+          "Authorization": 'Bearer ' + localStorage.getItem('token')
+      }   
+  }).pipe(
+      mergeMap((data) => {
+        var resp = <ResponseModel>data;
+        return of(resp);
+      }
+      ));  
+
+  }
+
   GetEmployeeById(id : number) : Observable<ResponseModel> {
     
     return this.http.get('https://hrms2023.azurewebsites.net/api/employee/'+id,{

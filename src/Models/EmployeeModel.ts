@@ -13,6 +13,18 @@ export class Employee {
   departmentId: number=0
 }
 
+export class Department {
+  id: number=0
+  name: string=""
+  
+  dateCreated: string=""
+  dateDeleted: any;
+  dateUpdated: string=""
+  isDeleted: boolean=false
+  status: boolean=false
+  
+}
+
 export class EmployeeActivity {
   activityId: number=0
   employeeActivityId: number=0

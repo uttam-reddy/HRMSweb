@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Employee } from 'src/Models/EmployeeModel';
 import { ResponseModel } from 'src/Models/ResponseModel';
 import { EmployeeService } from '../Services/Employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee',
@@ -12,7 +13,7 @@ import { EmployeeService } from '../Services/Employee.service';
 export class EmployeeComponent implements OnInit {
 
     employees :  Employee[] = [];
-    constructor(private employeeservice : EmployeeService ,private route : ActivatedRoute) {
+    constructor(private employeeservice : EmployeeService ,private route : ActivatedRoute,private _router : Router) {
 
 
     }
@@ -24,6 +25,10 @@ export class EmployeeComponent implements OnInit {
 
     ngAfterViewInit(){
       
+    }
+
+    navigate(id : any){
+      this._router.navigate(['/employeeedit',id]);
     }
 
     

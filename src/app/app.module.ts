@@ -17,9 +17,10 @@ import { AuthGuard } from './Guards/auth.guard';
 import { ResolveGuard } from './Guards/resolve.guard';
 import { ChildGuard } from './Guards/child.guard';
 import { LoadEmployeeGuard } from './Guards/loademployee.guard';
+import { EmployeeEditComponent } from './EmployeeEdit/employeeedit.component';
 @NgModule({
   declarations: [
-    AppComponent,UsersComponent,LoginComponent,EmployeeComponent, AgePipe,EmployeeDetailComponent,AboutComponent,ActivityComponent
+    AppComponent,UsersComponent,LoginComponent,EmployeeComponent, AgePipe,EmployeeDetailComponent,AboutComponent,ActivityComponent,EmployeeEditComponent
   ],
   imports: [
     BrowserModule,

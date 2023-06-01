@@ -11,20 +11,24 @@ import { LoginComponent } from './Home/login.component';
 import { UsersComponent } from './Users/users.component';
 import { ProductDashboardModule } from './product-dashboard/product-dashboard.module';
 import { LoadEmployeeGuard } from './Guards/loademployee.guard';
+import { EmployeeEditComponent } from './EmployeeEdit/employeeedit.component';
 const routes: Routes = [
 {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'login',component:LoginComponent},
-  {path:'users',component:UsersComponent},
+  {path:'users',component:UsersComponent,canActivate:[AuthGuard]},
   {path:'employees',component:EmployeeComponent,canActivate:[AuthGuard],resolve:{ data : ResolveGuard}},
+  {path:'employeeedit/:id',component:EmployeeEditComponent,canActivate:[AuthGuard],resolve:{ data : LoadEmployeeGuard},runGuardsAndResolvers: 'always'},
+  
   {path:'employees/:id',component:EmployeeDetailComponent,canActivate:[AuthGuard],resolve:{ data : LoadEmployeeGuard},canActivateChild:[ChildGuard],
 children :
 [
   {path:'',redirectTo:'activity',pathMatch:'full'},
 {path:'about',component:AboutComponent},
-{path:'activity',component:ActivityComponent,children:
+{path:'activity',component:ActivityComponent,
+children:
 [
   {path:'',redirectTo:'product',pathMatch:'full'},
-  {path : 'product',loadChildren : () => {return ProductDashboardModule}}
+  {path : 'product',loadChildren : () =>  ProductDashboardModule}
 
 ]},
 ],  },
@@ -32,7 +36,7 @@ children :
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

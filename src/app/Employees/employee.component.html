@@ -12,6 +12,7 @@ margin-right: 30px;" >
         <th scope="col">Department</th>
         <th scope="col">Duration</th>
         <th scope="col">Status</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody >
@@ -26,6 +27,9 @@ margin-right: 30px;" >
                 <input type="checkbox" class="custom-control-input" [checked]="employee.status">
 
             </div>
+        </td>
+        <td>
+          <button type="submit" (click)="navigate(employee.id)" class="btn btn-primary">Edit</button>
         </td>
       </tr>
       
